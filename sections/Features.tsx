@@ -3,6 +3,7 @@ import FeatureCard from "@/components/FeatureCard"
 import avatar1 from "@/assets/images/avatar-ashwin-santiago.jpg"
 import avatar2 from "@/assets/images/avatar-lula-meyers.jpg"
 import avatar3 from "@/assets/images/avatar-florence-shaw.jpg"
+import avatar4 from "@/assets/images/avatar-owen-garcia.jpg"
 import Image from "next/image"
 import Avatar from "@/components/Avatar"
 import Key from "@/components/Key"
@@ -31,7 +32,7 @@ export default function Features() {
           <FeatureCard
             title="Real-time Collection"
             description="Work together seamlessly with conflict-free team editing"
-            className="md:col-span-2 lg:col-span-1"
+            className="group md:col-span-2 lg:col-span-1"
           >
             <div className="flex justify-center items-center aspect-video">
               <Avatar className="z-40">
@@ -43,8 +44,13 @@ export default function Features() {
               <Avatar className="z-20 -ml-6 border-amber-500">
                 <Image src={avatar3} alt="Avatar 3" className="rounded-full" />
               </Avatar>
-              <Avatar className="-ml-6 border-transparent">
-                <div className="inline-flex justify-center items-center gap-1 bg-neutral-700 rounded-full size-full">
+              <Avatar className="-ml-6 border-transparent group-hover:border-green-500 transition">
+                <div className="inline-flex relative justify-center items-center gap-1 bg-neutral-700 rounded-full size-full">
+                  <Image
+                    src={avatar4}
+                    alt="Avatar 4"
+                    className="absolute opacity-0 group-hover:opacity-100 rounded-full size-full transition"
+                  />
                   {Array.from({ length: 3 }).map((_, i) => (
                     <span
                       key={i}
@@ -58,13 +64,21 @@ export default function Features() {
           <FeatureCard
             title="Interactive Prototyping"
             description="Engage your clients with prototypes that reacts to user actions"
-            className="md:col-span-2 lg:col-span-1"
+            className="group md:col-span-2 lg:col-span-1"
           >
             <div className="flex justify-center items-center aspect-video">
-              <p className="font-extrabold text-white/20 text-4xl text-center">
+              <p className="font-extrabold text-white/20 group-hover:text-white/10 text-4xl text-center transition duration-500">
                 We&apos;ve achieved{" "}
-                <span className="bg-clip-text bg-linear-to-r from-purple-400 to-pink-400 text-transparent">
-                  incredible
+                <span className="relative bg-clip-text bg-linear-to-r from-purple-400 to-pink-400 text-transparent">
+                  <span>incredible</span>
+                  <video
+                    src={"/assets/gif-incredible.mp4"}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="bottom-full left-1/2 absolute opacity-0 group-hover:opacity-100 shadow-xl rounded-2xl transition -translate-x-1/2 duration-500 pointer-events-none"
+                  />
                 </span>{" "}
                 growth this year
               </p>
@@ -75,10 +89,16 @@ export default function Features() {
             description="Powerful commands to help you create designs more quickly"
             className="md:col-span-2 lg:col-span-1 md:col-start-2 lg:col-start-auto"
           >
-            <div className="flex justify-center items-center gap-4 aspect-video">
-              <Key className="w-28">shift</Key>
-              <Key>alt</Key>
-              <Key>C</Key>
+            <div className="group flex justify-center items-center gap-4 aspect-video">
+              <Key className="outline-2 outline-transparent group-hover:outline-lime-400 outline-offset-4 w-28 transition group-hover:translate-y-1 duration-500">
+                shift
+              </Key>
+              <Key className="outline-2 outline-transparent group-hover:outline-lime-400 outline-offset-4 transition group-hover:translate-y-1 duration-500 delay-150">
+                alt
+              </Key>
+              <Key className="outline-2 outline-transparent group-hover:outline-lime-400 outline-offset-4 transition group-hover:translate-y-1 duration-500 delay-300">
+                C
+              </Key>
             </div>
           </FeatureCard>
         </div>
@@ -86,9 +106,9 @@ export default function Features() {
           {features.map((feature) => (
             <div
               key={feature}
-              className="inline-flex items-center gap-3 bg-neutral-900 px-3 md:px-5 py-1.5 md:py-2 border border-white/10 rounded-2xl"
+              className="group inline-flex items-center gap-3 bg-neutral-900 px-3 md:px-5 py-1.5 md:py-2 border border-white/10 rounded-2xl hover:scale-105 transition duration-500"
             >
-              <span className="inline-flex justify-center items-center bg-lime-400 rounded-full size-5 text-neutral-950 text-xl">
+              <span className="inline-flex justify-center items-center bg-lime-400 rounded-full size-5 text-neutral-950 text-xl group-hover:rotate-45 transition duration-500">
                 &#10038;
               </span>
               <span className="font-medium md:text-lg">{feature}</span>
